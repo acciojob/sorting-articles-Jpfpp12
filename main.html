@@ -1,16 +1,58 @@
 <!DOCTYPE html>
-
-<html>
-
+<html lang="en">
 <head>
-	<link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Band List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        li {
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+        }
+        li:last-child {
+            border-bottom: none;
+        }
+    </style>
 </head>
-
 <body>
-	<!-- the entire body must be written by student -->
-    <script type="text/javascript" src="./script.js">
-</script>
+    <ul id="band"></ul>
+    
+    <script>
+        const bands = [
+            'The Plot in You', 'The Devil Wears Prada', 'Pierce the Veil', 'Norma Jean',
+            'The Bled', 'Say Anything', 'The Midway State', 'We Came as Romans',
+            'Counterparts', 'Oh, Sleeper', 'A Skylit Drive', 'Anywhere But Here', 'An Old Dog'
+        ];
 
+        const bandList = document.getElementById('band');
+
+        function strip(bandName) {
+            return bandName.replace(/^(The |An |A )/, '').trim();
+        }
+
+        bands.sort((a, b) => strip(a).localeCompare(strip(b)));
+        
+        bands.forEach(band => {
+            const li = document.createElement('li');
+            li.textContent = band;
+            bandList.appendChild(li);
+        });
+    </script>
 </body>
-
 </html>
